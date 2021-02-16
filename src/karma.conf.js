@@ -12,7 +12,6 @@ module.exports = function (config) {
       require('karma-coverage-istanbul-reporter'),
       require('karma-phantomjs-launcher'),
       require('@angular-devkit/build-angular/plugins/karma'),
-      require('@angular/cli/plugins/karma')
     ],
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
