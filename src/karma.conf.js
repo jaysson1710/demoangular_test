@@ -22,10 +22,6 @@ module.exports = function (config) {
       combineBrowserReports: true,
       fixWebpackSourcePaths: true
     },
-    coverageReporter = {
-      type : 'html',
-      dir : './coverage'
-    },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
