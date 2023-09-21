@@ -31,7 +31,7 @@ jobs:
       uses: SonarSource/sonarqube-scan-action@v2.0.1
       with:
          # Additional arguments to the sonar-scanner
-         projectBaseDir: src
+         projectBaseDir: .
          args: >
            -Dsonar.exclusions=**/e2a/**,**/node_modules/**,**karma.conf**
            -Dsonar.tests=src
@@ -40,7 +40,6 @@ jobs:
            -Dsonar.test.inclusions=**/*.spec.ts
            -Dsonar.projectKey=dev_test_githug-angular
            -Dsonar.projectName=dev_test_github-angular
-      working-directory: .    
       env:
          #BRANCH: ${{github.event.pull_request.head.ref}}
          local_p: ${{ env.local_p }}
