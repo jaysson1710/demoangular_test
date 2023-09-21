@@ -24,10 +24,7 @@ jobs:
     - run: npm run build 
     - run: npm test --watch=false --single-run=true --reporters=junit,progress --browser=PhantomJs
     - run: |
-        ls 
-        ls src
-        LOCAL=${{ github.workspace }}
-        echo "LOCAL=$LOCAL" >> "$GITHUB_OUTPUT"
+        echo $(pwd)
     - name: Official SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@v2.0.1
       with:
@@ -37,11 +34,12 @@ jobs:
            -Dsonar.exclusions=**/e2a/**,**/node_modules/**,**karma.conf**
            -Dsonar.tests=src
            -Dsonar.sources=src
-           -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info
+           -Dsonar.typescript.lcov.reportPaths=$local/coverage/lcov.info
            -Dsonar.test.inclusions=**/*.spec.ts
            -Dsonar.projectKey=dev_test_githug-angular
            -Dsonar.projectName=dev_test_github-angular
       env:
          #BRANCH: ${{github.event.pull_request.head.ref}}
+         local: ${{ github.workspace }}
          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}    
