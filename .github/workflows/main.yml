@@ -10,7 +10,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -25,7 +24,7 @@ jobs:
     - run: npm test --watch=false --single-run=true --reporters=junit,progress --browser=PhantomJs
     - run: |
         echo $(pwd)
-        mkdir -p /github/workspace/coverage && cp ./coverage/lcov.info /github/workspace/coverage/lcov.info
+        
     - name: Official SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@v2.0.1
       with:
@@ -35,7 +34,7 @@ jobs:
            -Dsonar.exclusions=**/e2a/**,**/node_modules/**,**karma.conf**
            -Dsonar.tests=src
            -Dsonar.sources=src
-           -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info
+           -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
            -Dsonar.test.inclusions=**/*.spec.ts
            -Dsonar.projectKey=dev_test_githug-angular
            -Dsonar.projectName=dev_test_github-angular
