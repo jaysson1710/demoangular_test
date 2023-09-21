@@ -25,7 +25,7 @@ jobs:
     - run: |
         echo $(pwd)
         
-    - run: npm install -g sonarqube-scanner
+    - run: npm install -g sonarqube-scanner@2.9.1
     - name: sonar-scanner
       env:
         # add SONAR_TOKEN in the secret of the repository
