@@ -31,4 +31,4 @@ jobs:
         # add SONAR_TOKEN in the secret of the repository
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}  
-      run: sonar-scanner /k:angular-2-demo /n:angular-2-demo /d:sonar.login=$SONAR_TOKEN /d:sonar.host.url=$SONAR_HOST_URL /d:sonar.exclusions=**/e2a/**,**/node_modules/**,**karma.conf** /d:sonar.tests=src  /d:sonar.javascript.lcov.reportPaths=coverage/lcov.info /d:sonar.test.inclusions=**/*.spec.ts
+      run: sonar-scanner -Dsonar.exclusions=**/e2a/**,**/node_modules/**,**karma.conf** -Dsonar.tests=src -Dsonar.sources=src -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info -Dsonar.test.inclusions=**/*.spec.ts -Dsonar.projectKey=dev_test_githug-angular2 -Dsonar.projectName=dev_test_github-angular2
