@@ -25,6 +25,7 @@ jobs:
     - run: npm test --watch=false --single-run=true --reporters=junit,progress --browser=PhantomJs
     - run: |
         echo $(pwd)
+        ls coverage
     - name: Official SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@v2.0.1
       with:
@@ -34,7 +35,7 @@ jobs:
            -Dsonar.exclusions=**/e2a/**,**/node_modules/**,**karma.conf**
            -Dsonar.tests=src
            -Dsonar.sources=src
-           -Dsonar.typescript.lcov.reportPaths=$local/coverage/lcov.info
+           -Dsonar.typescript.lcov.reportPaths=${local}/coverage/lcov.info
            -Dsonar.test.inclusions=**/*.spec.ts
            -Dsonar.projectKey=dev_test_githug-angular
            -Dsonar.projectName=dev_test_github-angular
