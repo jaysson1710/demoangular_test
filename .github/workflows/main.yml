@@ -33,7 +33,7 @@ jobs:
            -Dsonar.exclusions=**/e2a/**,**/node_modules/**,**karma.conf**
            -Dsonar.tests=src
            -Dsonar.sources=src
-           -Dsonar.typescript.lcov.reportPaths=**/coverage/lcov.info
+           -Dsonar.typescript.lcov.reportPaths=./coverage/lcov.info
            -Dsonar.test.inclusions=**/*.spec.ts
            -Dsonar.projectKey=dev_test_githug-angular
            -Dsonar.projectName=dev_test_github-angular
