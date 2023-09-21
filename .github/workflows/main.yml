@@ -25,12 +25,12 @@ jobs:
     - run: npm test --watch=false --single-run=true --reporters=junit,progress --browser=PhantomJs
     - run: |
         echo ${{ github.workspace }}
-        cp ./coverage/lcov.info /github/workspace/lcov.info
+        
     - name: Official SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@v2.0.1
       with:
          # Additional arguments to the sonar-scanner
-         projectBaseDir: .
+         projectBaseDir: ${{ github.workspace }}
          args: >
            -Dsonar.exclusions=**/e2a/**,**/node_modules/**,**karma.conf**
            -Dsonar.tests=src
